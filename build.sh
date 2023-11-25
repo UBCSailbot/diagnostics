@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Remove previously built files
+rm -rf out/
+rm -rf diagnostics
+
 # Run CMake with source directory '.' and build directory out/build
 cmake -S . -B out/build
 
@@ -7,4 +11,4 @@ cmake -S . -B out/build
 make -C out/build
 
 # Copy the results to output file
-cp -r out/build/src/main out/main
+cp -r out/build/src/main/diagnostics .
