@@ -1,15 +1,24 @@
-# Top level CMake file for entire Diagnostics app
-
-# Set CMake version and create project
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.8)
 project(diagnostics)
 
-# Set C++ Standard
-set(CMAKE_CXX_STANDARD 20)
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
 
-# Import rapidYaml
+# find dependencies
+find_package(ament_cmake REQUIRED)
 find_package(ryml REQUIRED)
+# uncomment the following section in order to fill in
+# further dependencies manually.
+# find_package(<dependency> REQUIRED)
 
-# Add source files
-add_subdirectory(config)
-add_subdirectory(src)
+add_executable(diagnostics src/main/diagnostics.cpp)
+target_include_directories(diagnostics PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+target_compile_features(diagnostics PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+
+install(TARGETS diagnostics
+  DESTINATION lib/${PROJECT_NAME})
+
+ament_package()
