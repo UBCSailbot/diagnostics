@@ -11,9 +11,5 @@ int main(int argc, char ** argv)
 
     CommonUI myObj;
 
-    int width = myObj.getTerminalWidthPub();
-
-    std::cout << "Terminal width is: " << width << std::endl;
-
     return 0;
 }
