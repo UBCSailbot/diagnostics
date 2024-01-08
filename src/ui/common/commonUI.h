@@ -11,7 +11,6 @@ private:
 
 public:
     CommonUI();
-    int getTerminalWidthPub() const { return terminal_width; }
 };
 
 #endif
