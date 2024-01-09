@@ -1,14 +1,14 @@
 #include "diagnostics.h"
 
-#include <iostream>
-
 int main(int argc, char ** argv)
 {
     (void)argc;
     (void)argv;
+    CommonUI base_elements;
 
     base_elements.printDiv();
-    std::cout << "Welcome to UBC Sailbot Diagnostics! The C++ version" << std::endl;
+    std::string title = "Welcome to UBC Sailbot Diagnostics!";
+    base_elements.printCenter(title);
     base_elements.printDiv();
 
     return 0;

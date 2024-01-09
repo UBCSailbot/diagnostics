@@ -3,11 +3,11 @@
 
 /* Include Files */
 #include <iostream>
+#include <vector>
 
+#include "boatTest_common.h"
 #include "commonUI.h"
 
 /* Objects */
-
-CommonUI base_elements;
 
 #endif

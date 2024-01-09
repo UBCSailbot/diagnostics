@@ -6,6 +6,8 @@
 #include <unistd.h>
 
 #include <iostream>
+#include <string>
+#include <vector>
 
 /* Defines */
 
@@ -24,6 +26,7 @@ public:
     CommonUI();
     explicit CommonUI(int user_set_width);
     void printDiv() const;
+    void printCenter(std::string contents) const;
 };
 
 #endif
