@@ -11,5 +11,10 @@ int main(int argc, char ** argv)
     base_elements.printCenter(title);
     base_elements.printDiv();
 
+    std::unordered_map<std::string, std::string> commands;
+    commands["ab"] = "Test AB";
+    commands["cd"] = "Test CD";
+    base_elements.printMenu(commands);
+
     return 0;
 }

@@ -37,3 +37,10 @@ void CommonUI::printCenter(std::string contents) const
 
     std::cout << contents << std::endl;
 }
+
+void CommonUI::printMenu(std::unordered_map<std::string, std::string> commands)
+{
+    for (const auto & command : commands) {
+        std::cout << '[' << command.first << "]" << command.second << std::endl;
+    }
+}

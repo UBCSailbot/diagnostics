@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 /* Defines */
@@ -25,8 +26,9 @@ private:
 public:
     CommonUI();
     explicit CommonUI(int user_set_width);
-    void printDiv() const;
-    void printCenter(std::string contents) const;
+    void        printDiv() const;
+    void        printCenter(std::string contents) const;
+    static void printMenu(std::unordered_map<std::string, std::string> commands);
 };
 
 #endif
