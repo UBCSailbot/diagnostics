@@ -1,13 +1,13 @@
 #include "boatTest_common.h"
 
 BoatTest::BoatTest() { name = "NONESPECIFIED"; }
-BoatTest::BoatTest(std::string id, std::vector<std::string> topics, std::vector<std::string> messages)
+BoatTest::BoatTest(std::string id, testType test_type, std::vector<std::string> test_data)
 {
-    name         = id;
-    ROS_topics   = topics;
-    ROS_messages = messages;
+    name = id;
+    type = test_type;
+    data = test_data;
 }
 
-std::string              BoatTest::getName() { return name; }
-std::vector<std::string> BoatTest::getROSTopics() { return ROS_topics; }
-std::vector<std::string> BoatTest::getROSMessages() { return ROS_messages; }
+std::string              BoatTest::getName(BoatTest * test) { return test->name; }
+testType                 BoatTest::getTestType(BoatTest * test) { return test->type; }
+std::vector<std::string> BoatTest::getTestData(BoatTest * test) { return test->data; }
