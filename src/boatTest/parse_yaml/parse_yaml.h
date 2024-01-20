@@ -11,14 +11,11 @@
 
 #include "boatTest_common.h"
 
-/* Defines */
-#define YAML_CONFIG_FILE_PATH TEST_CONFIG_PATH
-
 /* Yaml File Parser*/
 class YamlParser
 {
 public:
-    std::vector<BoatTest> parseYaml();
+    std::vector<BoatTest> parseYaml(const char * yaml_file_path);
 };
 
 #endif

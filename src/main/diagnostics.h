@@ -8,5 +8,6 @@
 
 #include "boatTest_common.h"
 #include "commonUI.h"
+#include "parse_yaml.h"
 
 #endif

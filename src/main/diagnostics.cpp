@@ -1,5 +1,9 @@
 #include "diagnostics.h"
 
+#include <filesystem>
+
+namespace fs = std::filesystem;
+
 int main(int argc, char ** argv)
 {
     (void)argc;
@@ -15,6 +19,10 @@ int main(int argc, char ** argv)
     commands["ab"] = "Test AB";
     commands["cd"] = "Test CD";
     base_elements.printMenu(commands);
+
+    YamlParser main_yaml_parser;
+
+    main_yaml_parser.parseYaml(YAML_TEST_PATH);
 
     return 0;
 }
