@@ -1,7 +1,5 @@
 #include "parse_yaml.h"
 
-#include <iomanip>
-
 std::string readFile(const char * file_path)
 {
     std::ifstream in_file(file_path, std::ios::in | std::ios::binary);
@@ -17,24 +15,40 @@ std::string readFile(const char * file_path)
     return file_buffer.str();
 }
 
-std::vector<BoatTest> YamlParser::parseYaml(const char * yaml_file_path)
+testType getTestTypeFromStr(std::string test_type_str)
 {
-    std::vector<BoatTest> tests;
-
-    std::string yaml_contents = readFile(yaml_file_path);
-
-    ryml::Tree    tree = ryml::parse_in_place(ryml::to_substr(yaml_contents));
-    ryml::NodeRef foo  = tree["foo"];
-    for (ryml::NodeRef const & child : foo.children()) {
-        std::cout << "key: " << child.key() << " val: " << child.val() << std::endl;
+    if (test_type_str == "ROS") {
+        return ROS;
+    } else if (test_type_str == "CAN") {
+        return CAN;
+    } else {
+        return NONE;
     }
+}
 
-    ryml::NodeRef array = tree["matrix"]["array"];
-    for (ryml::NodeRef const & child : array.children()) {
-        double val;
-        child >> val;
-        std::cout << "float val: " << std::setprecision(18) << val << std::endl;
+std::vector<BoatTest *> YamlParser::parseYaml(const char * yaml_file_path)
+{
+    std::vector<BoatTest *> tests;
+    std::string             yaml_contents = readFile(yaml_file_path);
+
+    ryml::Tree    tree       = ryml::parse_in_place(ryml::to_substr(yaml_contents));
+    ryml::NodeRef test_array = tree["inputs"];
+
+    for (ryml::NodeRef const & test : test_array.children()) {
+        std::string              test_type_str;
+        std::string              test_name;
+        testType                 test_type;
+        int                      test_timeout;
+        std::vector<std::string> test_data;
+
+        test["type"] >> test_type_str;
+        test_type = getTestTypeFromStr(test_type_str);
+        test["name"] >> test_name;
+        test["timeout_sec"] >> test_timeout;
+        // TODO(unknown): add parsing for test data
+
+        BoatTest * new_test = new BoatTest(test_name, test_type, test_timeout, test_data);
+        tests.push_back(new_test);
     }
-
     return tests;
 }

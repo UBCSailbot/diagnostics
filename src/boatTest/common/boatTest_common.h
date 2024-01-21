@@ -6,23 +6,26 @@
 #include <vector>
 
 /* Objects */
-using testType = enum {
+typedef enum {
     ROS,
     CAN,
-};
+    NONE,
+} testType;
 
 class BoatTest
 {
     std::string              name;
     testType                 type;
+    int                      timeout_sec;
     std::vector<std::string> data;
 
 public:
     BoatTest();
-    BoatTest(std::string id, testType test_type, std::vector<std::string> data);
-    static std::string              getName(BoatTest * test);
-    static testType                 getTestType(BoatTest * test);
-    static std::vector<std::string> getTestData(BoatTest * test);
+    BoatTest(std::string id, testType test_type, int timeout, std::vector<std::string> test_data);
+    std::string              getName(BoatTest * test);
+    testType                 getTestType(BoatTest * test);
+    std::vector<std::string> getTestData(BoatTest * test);
+    int                      getTimeout(BoatTest * test);
 };
 
 #endif

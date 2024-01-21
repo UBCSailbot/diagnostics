@@ -15,7 +15,7 @@
 class YamlParser
 {
 public:
-    std::vector<BoatTest> parseYaml(const char * yaml_file_path);
+    std::vector<BoatTest *> parseYaml(const char * yaml_file_path);
 };
 
 #endif

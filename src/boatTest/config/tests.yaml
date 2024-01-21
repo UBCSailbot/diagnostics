@@ -1,11 +1,19 @@
-foo:
-  bar: "a"
-  barbar: "b"
-  barbarbar: "c"
-
-matrix:
-  array:
-    - 0.5
-    - 0.67
-    - 0.78
-    - 0.89
+inputs:
+  - type: ROS
+    name: rosTestOne
+    timeout_sec: 5
+    data:
+      dtype: uint64
+      val: 6
+  - type: ROS
+    name: rosTestTwo
+    timeout_sec: 5
+    data:
+      dtype: uint64
+      val: 7
+  - type: CAN
+    name: canTestOne
+    timeout_sec: 5
+    data:
+      dtype: float
+      val: 8.5
