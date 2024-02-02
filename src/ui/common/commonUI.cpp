@@ -37,5 +37,3 @@ void CommonUI::printCenter(std::string contents) const
 
     std::cout << contents << std::endl;
 }
-
-void CommonUI::printMenu(std::vector<BoatTest *> & tests) { return; }

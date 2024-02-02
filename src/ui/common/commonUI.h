@@ -31,7 +31,6 @@ public:
     explicit CommonUI(int user_set_width);
     void        printDiv() const;
     void        printCenter(std::string contents) const;
-    static void printMenu(std::vector<BoatTest *> & tests);
 };
 
 #endif
