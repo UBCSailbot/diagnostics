@@ -3,18 +3,7 @@
 CommonUI::CommonUI() { terminal_width = getTerminalWidth(); }
 CommonUI::CommonUI(int user_set_width) { terminal_width = user_set_width; }
 
-int CommonUI::getTerminalWidth()
-{
-    int            current_width;
-    struct winsize size;
-    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
-    if (size.ws_col > TERMINAL_WIDTH_MIN) {
-        current_width = static_cast<int>(size.ws_col * TERMINAL_WIDTH_SCALE);
-    } else {
-        current_width = size.ws_col;
-    }
-    return current_width;
-}
+int CommonUI::getTerminalWidth() { return 0; }
 
 void CommonUI::printDiv() const
 {

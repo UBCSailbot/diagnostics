@@ -9,27 +9,7 @@ App::App()
     yaml_parser = new_yaml_parser;
 }
 
-int App::appGetUserSelection(int * selection)
-{
-    while (true) {
-        std::string user_input;
-        std::cout << ">";
-        getline(std::cin, user_input);
-
-        try {
-            if (user_input.compare("q") == 0) {
-                *selection = -1;
-            } else {
-                *selection = stoi(user_input);
-            }
-            return 0;
-        } catch (std::invalid_argument const& ex) {
-            std::cout << "Diagnosics: " << ex.what() << std::endl;
-        }
-    }
-
-
-}
+int App::appGetUserSelection(std::string * selection) { return 0; }
 
 App::~App()
 {
@@ -46,13 +26,13 @@ int main(int argc, char ** argv)
     App diagnostics_app;
 
     while (true) {
-        int user_select;
+        std::string user_select;
         status = diagnostics_app.appGetUserSelection(&user_select);
         if (status) {
             std::cout << "Error in parsing user input. Exiting." << std::endl;
         }
 
-        if (user_select < 0) {
+        if (user_select == "q") {
             break;
         } else {
             std::cout << "Option " << user_select << " chosen." << std::endl;
