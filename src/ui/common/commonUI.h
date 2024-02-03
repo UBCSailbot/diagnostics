@@ -10,6 +10,9 @@
 #include <unordered_map>
 #include <vector>
 
+#include "boatTest_common.h"
+#include "parse_yaml.h"
+
 /* Defines */
 
 #define TERMINAL_WIDTH_SCALE 0.6
@@ -28,7 +31,6 @@ public:
     explicit CommonUI(int user_set_width);
     void        printDiv() const;
     void        printCenter(std::string contents) const;
-    static void printMenu(std::unordered_map<std::string, std::string> commands);
 };
 
 #endif
